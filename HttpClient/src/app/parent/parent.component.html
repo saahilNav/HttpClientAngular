@@ -1,0 +1,42 @@
+<p>
+  parent works! post method
+</p>
+<p *ngIf="datasaved" ngClass="success">
+  your data is submited,record successful
+</p>
+   
+<form [formGroup]="bookForm" (ngSubmit)="onFormsSubmit()">
+  <table>
+    <tr>
+      <td>
+        Name:
+      </td>
+      <td>
+        <input formControlName="name">
+      </td>
+    </tr>
+    <tr><td>
+        surname:
+      </td>
+      <td>
+        <input formControlName="surname">
+      </td></tr>
+      <tr>
+        <td colspan="2">
+          <button [disabled]="bookForm.invalid">Submit</button>
+        </td>
+      </tr>
+  </table>
+</form>
+
+<h3>view</h3>
+<table>
+  <tr>
+    <th>Id</th><th>Name</th><th>surname</th>
+  </tr>
+  <tr *ngFor="let bk of allEmploye|async">
+  <td>{{bk.id}}</td>  <td>{{bk.name}}</td>
+  <td>{{bk.surname}}</td>
+<td><button (click)="DeleteDetails(bk.id)">Delete</button></td>
+  </tr>
+    <table>
